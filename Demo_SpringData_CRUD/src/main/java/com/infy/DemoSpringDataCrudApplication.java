@@ -29,10 +29,11 @@ public class DemoSpringDataCrudApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 //		addCustomer();
-		// getCustomer();
-		findAllCustomers();
-		updateCustomer();
-		findAllCustomers();
+//		getCustomer();
+//		findAllCustomers();
+//		updateCustomer();
+//		findAllCustomers();
+		deleteCustomer();
 	}
 
 	private void findAllCustomers() {
@@ -89,4 +90,14 @@ public class DemoSpringDataCrudApplication implements CommandLineRunner {
 		}
 	}
 
+	public void deleteCustomer() {
+		try {
+			customerService.deleteCustomer(4);
+			LOGGER.info(environment.getProperty("UserInterface.DELETE_SUCCESS"));
+		} catch (Exception e) {
+			if (e.getMessage() != null)
+				LOGGER.info(environment.getProperty(e.getMessage(),
+						"Something went wrong. Please check log file for more details."));
+		}
+	}
 }

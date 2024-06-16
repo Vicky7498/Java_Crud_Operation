@@ -74,4 +74,12 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer customer = optional.orElseThrow(() -> new InfyBankException("Service.CUSTOMER_NOT_FOUND"));
 		customer.setEmailId(emailId);
 	}
+
+	@Override
+	public void deleteCustomer(Integer customerId) throws InfyBankException {
+		// TODO Auto-generated method stub
+		Optional<Customer> optional = customerRepository.findById(customerId);
+		optional.orElseThrow(() -> new InfyBankException("Service.CUSTOMER_NOT_FOUND"));
+		customerRepository.deleteById(customerId);
+	}
 }

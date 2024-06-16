@@ -14,4 +14,6 @@ public interface CustomerService {
 
 	public void updateCustomer(Integer customerId, String emailId) throws InfyBankException;
 
+	public void deleteCustomer(Integer customerId) throws InfyBankException;
+
 }
